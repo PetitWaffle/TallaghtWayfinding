@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
@@ -39,7 +38,6 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="js/leaflet-search.js"></script>
         <script src="data/TownlandsrevisedBoundaries_2.js"></script>
         <script src="data/Greenway_3.js"></script>
         <script src="data/WayfindingRoutes2_4.js"></script>
@@ -47,7 +45,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[53.254928532591286,-6.432056274952047],[53.3129162915132,-6.2751523863135175]]);
+        }).fitBounds([[53.273094597739146,-6.400143866491299],[53.30276061458506,-6.32166311097077]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -124,7 +122,7 @@
         function pop_TownlandsrevisedBoundaries_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>name</strong><br />' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -136,6 +134,21 @@
 
         function style_TownlandsrevisedBoundaries_2_0(feature) {
             switch(String(feature.properties['id'])) {
+                case '3.0':
+                    return {
+                pane: 'pane_TownlandsrevisedBoundaries_2',
+                opacity: 1,
+                color: 'rgba(1,31,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,4,254,0.0)',
+                interactive: true,
+            }
+                    break;
                 case '1':
                     return {
                 pane: 'pane_TownlandsrevisedBoundaries_2',
@@ -147,37 +160,7 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(59,127,236,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '2':
-                    return {
-                pane: 'pane_TownlandsrevisedBoundaries_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(220,78,132,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '3.0':
-                    return {
-                pane: 'pane_TownlandsrevisedBoundaries_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,216,23,1.0)',
+                fillColor: 'rgba(59,127,236,0.5019607843137255)',
                 interactive: true,
             }
                     break;
@@ -196,16 +179,17 @@
             style: style_TownlandsrevisedBoundaries_2_0,
         });
         bounds_group.addLayer(layer_TownlandsrevisedBoundaries_2);
+        map.addLayer(layer_TownlandsrevisedBoundaries_2);
         function pop_Greenway_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>id</strong><br />' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['size'] !== null ? autolinker.link(feature.properties['size'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>size</strong><br />' + (feature.properties['size'] !== null ? autolinker.link(feature.properties['size'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['direction'] !== null ? autolinker.link(feature.properties['direction'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>direction</strong><br />' + (feature.properties['direction'] !== null ? autolinker.link(feature.properties['direction'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -245,7 +229,7 @@
         function pop_WayfindingRoutes2_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>id</strong><br />' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -285,22 +269,22 @@
         function pop_WayfindingDecisionPoints2_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="Dir N"colspan="2"><strong>Dir N</strong><br />' + (feature.properties['Dir N'] !== null ? autolinker.link(feature.properties['Dir N'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Dir N</strong><br />' + (feature.properties['Dir N'] !== null ? autolinker.link(feature.properties['Dir N'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="Dir E"colspan="2"><strong>Dir E</strong><br />' + (feature.properties['Dir E'] !== null ? autolinker.link(feature.properties['Dir E'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Dir E</strong><br />' + (feature.properties['Dir E'] !== null ? autolinker.link(feature.properties['Dir E'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="Dir S"colspan="2"><strong>Dir S</strong><br />' + (feature.properties['Dir S'] !== null ? autolinker.link(feature.properties['Dir S'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Dir S</strong><br />' + (feature.properties['Dir S'] !== null ? autolinker.link(feature.properties['Dir S'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="Dir W"colspan="2"><strong>Dir W</strong><br />' + (feature.properties['Dir W'] !== null ? autolinker.link(feature.properties['Dir W'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Dir W</strong><br />' + (feature.properties['Dir W'] !== null ? autolinker.link(feature.properties['Dir W'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="Level"colspan="2"><strong>Level</strong><br />' + (feature.properties['Level'] !== null ? autolinker.link(feature.properties['Level'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Level</strong><br />' + (feature.properties['Level'] !== null ? autolinker.link(feature.properties['Level'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="id"colspan="2"><strong>id</strong><br />' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>id</strong><br />' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -427,11 +411,11 @@
         .title += 'Search for a place';
         var baseMaps = {};
         var overlaysTree = [
-            {label: 'Wayfinding Decision Points2<br /><table><tr><td style="text-align: center;"><img src="legend/WayfindingDecisionPoints2_5_High0.png" /></td><td>High</td></tr><tr><td style="text-align: center;"><img src="legend/WayfindingDecisionPoints2_5_Low1.png" /></td><td>Low</td></tr><tr><td style="text-align: center;"><img src="legend/WayfindingDecisionPoints2_5_Feeder2.png" /></td><td>Feeder</td></tr><tr><td style="text-align: center;"><img src="legend/WayfindingDecisionPoints2_5_Greenway3.png" /></td><td>Greenway</td></tr><tr><td style="text-align: center;"><img src="legend/WayfindingDecisionPoints2_5_RG4.png" /></td><td>RG</td></tr></table>', layer: layer_WayfindingDecisionPoints2_5},
+            {label: 'Wayfinding Decision Points2<br /><table><tr><td style="text-align: center;"><img src="legend/WayfindingDecisionPoints2_5_HighLevelDecisionPoint0.png" /></td><td>High Level Decision Point</td></tr><tr><td style="text-align: center;"><img src="legend/WayfindingDecisionPoints2_5_LowLevelDecisionPoint1.png" /></td><td>Low Level Decision Point</td></tr><tr><td style="text-align: center;"><img src="legend/WayfindingDecisionPoints2_5_FeederSign2.png" /></td><td>Feeder Sign</td></tr><tr><td style="text-align: center;"><img src="legend/WayfindingDecisionPoints2_5_GreenwayWayfinding3.png" /></td><td>Greenway Wayfinding</td></tr><tr><td style="text-align: center;"><img src="legend/WayfindingDecisionPoints2_5_RedGreenwayWayfinding4.png" /></td><td>Red&Greenway Wayfinding</td></tr></table>', layer: layer_WayfindingDecisionPoints2_5},
         {label: '<b>Wayfinding_Group</b>', selectAllCheckbox: true, children: [
             {label: '<img src="legend/WayfindingRoutes2_4.png" /> Wayfinding Routes 2', layer: layer_WayfindingRoutes2_4},
             {label: '<img src="legend/Greenway_3.png" /> Greenway', layer: layer_Greenway_3},]},
-            {label: 'Townlands(revised) Boundaries<br /><table><tr><td style="text-align: center;"><img src="legend/TownlandsrevisedBoundaries_2_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/TownlandsrevisedBoundaries_2_21.png" /></td><td>2</td></tr><tr><td style="text-align: center;"><img src="legend/TownlandsrevisedBoundaries_2_32.png" /></td><td>3</td></tr></table>', layer: layer_TownlandsrevisedBoundaries_2},
+            {label: 'Townlands(revised) Boundaries<br /><table><tr><td style="text-align: center;"><img src="legend/TownlandsrevisedBoundaries_2_ImportantInstitution0.png" /></td><td>Important Institution</td></tr><tr><td style="text-align: center;"><img src="legend/TownlandsrevisedBoundaries_2_TownlandRevised1.png" /></td><td>Townland Revised</td></tr></table>', layer: layer_TownlandsrevisedBoundaries_2},
             {label: "Google Earth Satellite", layer: layer_GoogleEarthSatellite_1},
             {label: "OpenStreetMap", layer: layer_OpenStreetMap_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
@@ -514,20 +498,13 @@
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['id'] !== null?String('<div style="color: #323232; font-size: 8pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['id']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_WayfindingDecisionPoints2_5'});
+            layer.bindTooltip((layer.feature.properties['id'] !== null?String('<div style="color: #323232; font-size: 6pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['id']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_WayfindingDecisionPoints2_5'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        map.addControl(new L.Control.Search({
-            layer: layer_WayfindingDecisionPoints2_5,
-            initial: false,
-            hideMarkerOnCollapse: true,
-            propertyName: 'id'}));
-        document.getElementsByClassName('search-button')[0].className +=
-         ' fa fa-binoculars';
         resetLabels([layer_TownlandsrevisedBoundaries_2,layer_Greenway_3,layer_WayfindingDecisionPoints2_5]);
         map.on("zoomend", function(){
             resetLabels([layer_TownlandsrevisedBoundaries_2,layer_Greenway_3,layer_WayfindingDecisionPoints2_5]);
